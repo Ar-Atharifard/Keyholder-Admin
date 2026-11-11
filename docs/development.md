@@ -20,8 +20,7 @@ uv build
 ```
 
 Test grammar/dispatch and confirmations without SSH/network access. Keep tests and
-installation independent of application source. Small profile/selection contracts
-are snapshots of the public protocol, not a reason to import server internals.
+installation independent of application source. Profile and inbound-selection fixtures protect the public protocol.
 
 ## Dispatcher protocol
 
@@ -34,17 +33,15 @@ CLI requests travel through SSH (or local dispatch with `--local`):
 The dispatcher returns JSON on stdout: `{"ok":true,"result":...}` or
 `{"ok":false,"error":"..."}`. It must authorize callers, keep credentials on the
 server and bridge account operations to Keyholder's authenticated API. The bot uses
-a local dispatcher. Host maintenance belongs to private extensions, not the core API.
+a local dispatcher. The core API does not accept host-maintenance commands.
 
 ## CI and versions
 
 `Admin package` checks tests, Ruff and package builds on pushes/PRs. Manual
 `Prepare admin release` builds packages and creates a draft GitHub release with
-checksums; it does not deploy. These workflows become available only after this
-repository is published with Actions enabled. Review a draft before publishing.
+checksums. Review the draft before publishing; neither workflow deploys services.
 
 Client and core versions need not match. Preserve protocol-v1 operation names,
 argument shapes and confirmations; test coordinated changes independently and
-link their pull requests. Install released packages in production, not sibling
-source paths. Host source, deployment secrets and customer data stay outside this
-repository. MIT applies to this package, not other projects' code.
+link their pull requests. Use versioned packages in production. Never include
+deployment secrets or customer data in contributions.

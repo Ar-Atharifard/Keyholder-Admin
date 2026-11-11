@@ -12,8 +12,7 @@ Requires Python 3.10+ and SSH. Install a reviewed wheel in an isolated environme
 uv tool install ./keyholder_admin-0.2.0-py3-none-any.whl
 ```
 
-Use the version you downloaded; verify its published checksum first. This command
-does not assume the package is available on PyPI.
+Use the version you downloaded and verify its checksum first.
 
 Create a private JSON file and select it explicitly:
 
@@ -49,16 +48,12 @@ through a protected service environment, not public configuration or shell histo
 Use `/help` in the bot. Explicit link commands expose bearer credentials to that
 administrator chat. Protect the Telegram account, token and state directory.
 
-## Project boundaries
+## Compatibility
 
-- **keyholder:** API, database, panel/account and billing rules.
-- **keyholder-admin:** client grammar, transport, interaction and display.
-- **keyholder-infra (private):** deployment, privileged dispatcher and operational extensions.
-
-Repositories and versions are independent; no submodules are needed. This client
-imports neither server code nor private infrastructure. Core 0.3.0 supplies the
-protocol-v1 `/admin/operations` endpoint; verify compatibility with your dispatcher.
-Uncertain mutations require checking state before retrying.
+Keyholder owns account and billing rules; this package provides the client.
+Core 0.3.0 supplies the protocol-v1 `/admin/operations` endpoint. Configure a
+compatible server dispatcher; deployment is managed separately by operators.
+Inspect current state before retrying an uncertain mutation.
 
 See [development and protocol](docs/development.md), [Contributing](CONTRIBUTING.md)
 and [Security](SECURITY.md). Licensed under [MIT](LICENSE).
