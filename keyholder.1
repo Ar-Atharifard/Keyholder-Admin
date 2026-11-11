@@ -1,0 +1,22 @@
+.TH KEYHOLDER 1
+.SH NAME
+keyholder \- administer Keyholder customers over authenticated private access
+.SH SYNOPSIS
+.B keyholder
+[--host SSH_ALIAS] [--backend ID] [--json] RESOURCE ACTION [OPTIONS]
+.SH DESCRIPTION
+Manage customers, accounts, subscriptions, inbound choices and billing.
+Run keyholder help RESOURCE ACTION for complete arguments.
+.SH SECURITY
+Explicit secret exports require a terminal or a new mode-0600 file selected with
+--save-link. Destructive operations require --confirm. After an uncertain mutation,
+inspect current state before retrying. Protect SSH access and Telegram admin chats.
+.SH CONFIGURATION
+KEYHOLDER_ADMIN_CONFIG selects a JSON file with host, ssh_config and remote_path.
+Panel credentials stay in the core application.
+.SH COMPONENTS
+This package provides the client, not the API server or privileged dispatcher.
+Keyholder owns account and billing rules; operator infrastructure supplies the
+server dispatcher. Repositories are independent and require no Git submodules.
+.SH SEE ALSO
+keyholder help, README.md, docs/development.md

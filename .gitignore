@@ -1,0 +1,32 @@
+.env
+.env.*
+!.env.example
+
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+*.db
+*.sqlite
+*.sqlite3
+
+data/
+logs/
+
+.DS_Store
+.vscode/
+.idea/
+
+# Code-only onboarding snapshots; keep outside releases.
+.audit/
+
+# Personal notes, deployment records and publication artifacts stay local.
+.private/
+.keyholder-admin.json
+dist/
+build/
+*.egg-info/
