@@ -55,6 +55,6 @@ Core 0.3.0 supplies the protocol-v1 `/admin/operations` endpoint. Configure a
 compatible server dispatcher; deployment is managed separately by operators.
 Inspect current state before retrying an uncertain mutation.
 
-See [development and protocol](docs/development.md), [Contributing](CONTRIBUTING.md)
+See [development, updates and protocol](docs/development.md), [Contributing](CONTRIBUTING.md)
 and [Security](SECURITY.md). Licensed under [MIT](LICENSE).
 Developed with direct assistance from OpenAI Codex; maintainers review the result.

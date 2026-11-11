@@ -45,3 +45,22 @@ Client and core versions need not match. Preserve protocol-v1 operation names,
 argument shapes and confirmations; test coordinated changes independently and
 link their pull requests. Use versioned packages in production. Never include
 deployment secrets or customer data in contributions.
+
+## Updating an installed client
+
+Install the reviewed wheel into the existing isolated environment, then check its
+requirements:
+
+```sh
+/path/to/venv/bin/python -m pip install --no-index --no-deps --force-reinstall ./keyholder_admin-VERSION-py3-none-any.whl
+/path/to/venv/bin/python -m pip check
+```
+
+Replace the environment path and filename. To build from a reviewed source checkout,
+run `uv build`; alternatively, install that checkout with `python -m pip install .`
+using the target environment's Python. Check compatibility with any installed
+extensions before replacing the package, and retain the previous artifact for rollback.
+
+The CLI uses the new package on its next invocation. A running Telegram bot must be
+restarted through its service manager. Verify command help, a read-only account
+request and `/ping`. Installation does not update the backend or dispatcher.
